@@ -1,48 +1,145 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-    <title>Registro Libros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+          rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+            defer></script>
+
+    <title>Registrar Libro - Librería PUCE</title>
 </head>
-<body>
-<!--Reutilizar Nav-->
-<div th:replace="./fragments/nav :: navbar"></div>
-<section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-    <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Registrar un nuevo libro:</h2>
 
-    <form>
-        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-            <div>
-                <label class="text-gray-700 dark:text-gray-200" for="username">Título</label>
-                <input id="username" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-            </div>
+<body style="background-color: #E8EEF5;" class="flex flex-col min-h-screen">
 
-            <div>
-                <label class="text-gray-700 dark:text-gray-200" for="emailAddress">Género</label>
-                <input id="emailAddress" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-            </div>
+<!-- Menú -->
+<div th:replace="fragments/nav :: navbar"></div>
 
-            <div>
-                <label class="text-gray-700 dark:text-gray-200" for="password">Editorial</label>
-                <input id="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-            </div>
+<main class="flex-grow container mx-auto px-4 py-12">
 
-            <div>
-                <label class="text-gray-700 dark:text-gray-200" for="passwordConfirmation">Número de Página</label>
-                <input id="passwordConfirmation" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-            </div>
+    <!-- Encabezado -->
+    <div class="max-w-4xl mx-auto mb-8">
+
+        <p class="text-sm font-semibold text-blue-700 uppercase tracking-wide">
+            Catálogo de libros
+        </p>
+
+        <h1 class="text-3xl font-bold text-[#26384D] mt-2">
+            Registrar nuevo libro
+        </h1>
+
+        <p class="text-gray-600 mt-2">
+            Completa los siguientes campos para agregar un libro al catálogo.
+        </p>
+
+    </div>
+
+    <!-- Formulario -->
+    <section class="max-w-4xl mx-auto bg-[#F8FAFC] border border-gray-200 rounded-lg shadow-sm">
+
+        <div class="p-6 sm:p-8">
+
+            <h2 class="text-lg font-semibold text-[#26384D] border-b border-gray-200 pb-4">
+                Información del libro
+            </h2>
+
+            <form th:action="@{/libros/guardar}"
+                  th:object="${libro}"
+                  method="post"
+                  class="mt-6">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                    <!-- Título -->
+                    <div>
+                        <label for="titulo"
+                               class="block mb-2 text-sm font-medium text-gray-700">
+                            Título del libro
+                        </label>
+
+                        <input id="titulo"
+                               type="text"
+                               th:field="*{titulo}"
+                               class="w-full px-4 py-2.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none"
+                               placeholder="Ej. Cien años de soledad"
+                               required>
+                    </div>
+
+                    <!-- Género -->
+                    <div>
+                        <label for="genero"
+                               class="block mb-2 text-sm font-medium text-gray-700">
+                            Género literario
+                        </label>
+
+                        <input id="genero"
+                               type="text"
+                               th:field="*{genero}"
+                               class="w-full px-4 py-2.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none"
+                               placeholder="Ej. Novela / Ficción"
+                               required>
+                    </div>
+
+                    <!-- Editorial -->
+                    <div>
+                        <label for="editorial"
+                               class="block mb-2 text-sm font-medium text-gray-700">
+                            Editorial
+                        </label>
+
+                        <input id="editorial"
+                               type="text"
+                               th:field="*{editorial}"
+                               class="w-full px-4 py-2.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none"
+                               placeholder="Ej. Planeta"
+                               required>
+                    </div>
+
+                    <!-- Número de páginas -->
+                    <div>
+                        <label for="numeroPaginas"
+                               class="block mb-2 text-sm font-medium text-gray-700">
+                            Número de páginas
+                        </label>
+
+                        <input id="numeroPaginas"
+                               type="number"
+                               th:field="*{numeroPaginas}"
+                               class="w-full px-4 py-2.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none"
+                               placeholder="Ej. 350"
+                               min="1"
+                               required>
+                    </div>
+
+                </div>
+
+                <!-- Botones -->
+                <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
+
+                    <a th:href="@{/}"
+                       class="px-5 py-2.5 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors">
+                        Cancelar
+                    </a>
+
+                    <button type="submit"
+                            class="px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
+                        Guardar libro
+                    </button>
+
+                </div>
+
+            </form>
         </div>
+    </section>
 
-        <div class="flex justify-end mt-6">
-            <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Guardar</button>
-        </div>
-    </form>
-</section>
+</main>
 
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer_pa"></div>
 
-<div th:replace="./fragments/footer :: footer_pa"></div>
 </body>
-
 </html>

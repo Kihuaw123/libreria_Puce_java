@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-/*Opcional*/
 @Table(name = "libros")
 public class Libro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +23,5 @@ public class Libro {
 
     private String genero;
 
-    private int numero_paginas;
-    
+    private int numeroPaginas;
 }
