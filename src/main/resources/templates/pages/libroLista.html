@@ -25,13 +25,13 @@
                 Título
             </th>
             <th scope="col" class="px-6 py-3 bg-neutral-secondary-soft font-medium">
-                ISBN
+                Editorial
             </th>
             <th scope="col" class="px-6 py-3 font-medium">
-                Resumen
+                Género
             </th>
             <th scope="col" class="px-6 py-3 font-medium">
-                Stock
+                Número de página
             </th>
             <th scope="col" class="px-6 py-3 font-medium">
                 Acciones
@@ -39,14 +39,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="border-b border-default">
-            <td class="px-6 py-4">
+        <tr th:each="libro:${libros}" class="border-b border-default">
+            <td th:text="*{libro.titulo}" class="px-6 py-4">
             </td>
-            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            <td th:text="*{libro.editorial}" class="px-6 py-4 bg-neutral-secondary-soft">
             </td>
-            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            <td th:text="*{libro.genero}" class="px-6 py-4 bg-neutral-secondary-soft">
             </td>
-            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            <td th:text="*{libro.numeroPaginas}" class="px-6 py-4 bg-neutral-secondary-soft">
             </td>
             <td class="px-6 py-4 bg-neutral-secondary-soft">
             </td>
