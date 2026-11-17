@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <title>Lista Libros</title>
+</head>
+<body>
+<!--Reutilizar la nav-->
+<div th:replace="fragments/nav :: navbar"></div>
+<!--TABLA-->
+<div class="relative overflow-x-auto bg-neutral-primary shadow-xs rounded-base border border-default">
+    <!--FORM PARA BUSCAR LIBRO POR TITULO-->
+    <form class="mb-3">
+        <div class="input-group">
+            <input type="text" name="inputLibro" class="form-control" placeholder="Buscar libro">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </div>
+    </form>
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="text-sm text-body border-b border-default">
+        <tr>
+            <th scope="col" class="px-6 py-3 font-medium">
+                Título
+            </th>
+            <th scope="col" class="px-6 py-3 bg-neutral-secondary-soft font-medium">
+                ISBN
+            </th>
+            <th scope="col" class="px-6 py-3 font-medium">
+                Resumen
+            </th>
+            <th scope="col" class="px-6 py-3 font-medium">
+                Stock
+            </th>
+            <th scope="col" class="px-6 py-3 font-medium">
+                Acciones
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="border-b border-default">
+            <td class="px-6 py-4">
+            </td>
+            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            </td>
+            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            </td>
+            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            </td>
+            <td class="px-6 py-4 bg-neutral-secondary-soft">
+            </td>
+            <td class="px-6 py-4 bg-neutral-secondary-soft flex gap-4">
+                <a class="underline text-blue-600 cursor-pointer">Actualizar</a>
+                <form method="post" >
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" onclick="return confirm('¿Está seguro de eliminar el registro?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-guardar">Nuevo Libro</a>
+
+</div>
+
+</body>
+</html>
